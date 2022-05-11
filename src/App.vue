@@ -8,59 +8,24 @@
         dark
         color="green"
         class="lighten-1"
-
     >
       <v-app-bar-title>Vue Dahboard</v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn text rounded>home</v-btn>
-      <v-btn text rounded>login</v-btn>
+      <v-btn
+          rounded
+          text
+          v-for="link in links" :key="`${link.label}-link-header`" :to="link.url" >{{link.label}}
+      </v-btn>
     </v-app-bar>
 
 <!--    login -->
-    <v-content>
-    <v-card width="400px" class="mx-auto mt-5">
-      <v-card-title>
-        <h1 class="display-1">Login</h1>
-      </v-card-title>
-
-      <v-card-text>
-        <v-form>
-          <v-text-field
-              label="Username"
-              type="text"
-              prepend-icon="mdi-account-circle">
-            User
-          </v-text-field>
-          <v-text-field
-              label="Password"
-              :type="showPassword
-              ?'text':'password'"
-              prepend-icon="mdi-lock"
-              :append-icon="showPassword
-              ?'mdi-eye'
-              : 'mdi-eye-off'"
-              @click:append="showPassword=!showPassword">
-            Password
-          </v-text-field>
-        </v-form>
-      </v-card-text>
-
-      <v-divider></v-divider>
-
-      <v-card-actions>
-        <v-btn color="success" @click="login">Register</v-btn>
-        <v-spacer></v-spacer>
-        <v-btn color="info" @click="register">Login</v-btn>
-      </v-card-actions>
-
-    </v-card>
-    </v-content>
+    <v-main>
+    <router-view></router-view>
+    </v-main>
     <v-footer
         padless
         color="green"
         app
-        v-bind="localAttrs"
-
     >
       <v-card
           flat
@@ -86,6 +51,13 @@
         <v-card-text class="white--text">
           {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
         </v-card-text>
+
+        <v-btn
+            rounded
+            text
+            v-for="link in links" :key="`${link.label}-link-footer`" :to="link.url" >{{link.label}}
+        </v-btn>
+
       </v-card>
     </v-footer>
 
@@ -94,18 +66,29 @@
 
 <script>
 
-
 export default {
   name: 'App',
 
   components: {},
 
   data: () => ({
-    showPassword: false,
+
     icons: [
       'mdi-facebook',
-        'mdi-twitter']
-    //
+        'mdi-twitter'],
+
+    links:[{
+      label:'home',
+      url:'/'
+    },
+      {
+        label:'login',
+        url: '/login'
+      },
+      {
+        label:'dashboard',
+        url: '/dashboard'
+      }]
   }),
   computed: {}
 };
