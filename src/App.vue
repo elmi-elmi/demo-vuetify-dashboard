@@ -86,6 +86,10 @@ export default {
         url: '/login'
       },
       {
+        label: 'signup',
+        url:'/signup'
+      },
+      {
         label:'dashboard',
         url: '/dashboard'
       }]
