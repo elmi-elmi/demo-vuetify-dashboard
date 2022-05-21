@@ -16,6 +16,8 @@
           text
           v-for="link in links" :key="`${link.label}-link-header`" :to="link.url" >{{link.label}}
       </v-btn>
+
+      <v-btn @click="toggleTheme" text rounded>Toggle theme</v-btn>
     </v-app-bar>
 
 <!--    login -->
@@ -94,6 +96,10 @@ export default {
         url: '/dashboard'
       }]
   }),
-  computed: {}
+  methods:{
+    toggleTheme(){
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
+  }
 };
 </script>
