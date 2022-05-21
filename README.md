@@ -1,5 +1,7 @@
 # vuetify-dashboard
 
+https://vuetify-dashboard-elmi-elmi.netlify.app/
+
 ## Project setup
 ```
 yarn install
